@@ -1,0 +1,6 @@
+created:
+    - database/factories/ProyectoFactory.php
+    - database/migrations/2021_11_03_205416_create_proyectos_table.php
+    - app/Models/Proyecto.php
+models:
+    Proyecto: { nombre: 'string unique,', imagen: 'string,', descripcion: 'longtext,', url: string }
