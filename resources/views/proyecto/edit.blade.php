@@ -12,7 +12,7 @@
         <div class="row">
             <div class="card">
                 <div class="card-header">
-                    Registro de proyectos
+                    Edición de registro
                     <div class="btn-group" role="group" aria-label="">
                         <a class="btn btn-warning ms-4" type="button" href="{{route('proyectos.index')}}">Atrás</a>
                     </div>
@@ -27,27 +27,28 @@
                             </ul>
                         </div>
                     @endif
-                    <form action="{{route('proyectos.store')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('proyectos.update',$proyecto->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="form-group">
                             <label>Nombre</label>
-                            <input type="text" name="nombre" value="{{old('nombre')}}" id="nombre" class="form-control" placeholder="" aria-describedby="helpId">
+                            <input type="text" name="nombre" value="{{$proyecto->nombre}}" id="nombre" class="form-control" placeholder="" aria-describedby="helpId">
                         </div>
                         <div class="form-group">
                             <label>Imagen</label>
-                            <input type="file" name="imagen" value="{{old('imagen')}}" id="imagen" class="form-control" placeholder="" aria-describedby="helpId">
+                            <input type="file" name="imagen"  value="{{$proyecto->imagen}}" id="imagen" class="form-control" placeholder="" aria-describedby="helpId">
                         </div>
                         <div class="form-group">
                               <label>Descripcion</label>
-                              <textarea class="form-control" name="descripcion" id="descripcion" rows="3">{{old('descripcion')}}</textarea>
+                              <textarea class="form-control" name="descripcion" id="descripcion" rows="3">{{$proyecto->descripcion}}</textarea>
                         </div>
                         <div class="form-group">
                         <label>URL</label>
-                        <input type="text" name="url" value="{{old('url')}}" id="url" class="form-control" placeholder="" aria-describedby="helpId">
+                        <input type="text" name="url" value="{{$proyecto->url}}" id="url" class="form-control" placeholder="" aria-describedby="helpId">
                         </div>
                         <br/>
                         <div class="btn-group" role="group" aria-label="">
-                            <button type="submit" class="btn btn-primary">Registrar</button>
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
                         </div>
                     </form>
                 </div>
