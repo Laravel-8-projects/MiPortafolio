@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\ContactController as AdminContactController;
+use App\Http\Controllers\Admin\ExtrasController;
 use App\Http\Controllers\Admin\ProyectoController;
+use App\Http\Controllers\User\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,12 +16,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('proyectos', ProyectoController::class);
-
-Route::get('/', function () {
-    return view('welcome');
-});
+//USER
+Route::resource('contactos', ContactController::class);
+Route::get('/',[\App\Http\Controllers\User\PortafolioController::class , 'index'])->name('template.index');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//ADMIN
+Route::resource('proyectos', ProyectoController::class);
+Route::get('admin/contactos',[\App\Http\Controllers\Admin\ContactController::class, 'index'])->name('admin.contactos.index');
+Route::delete('admin/contactos/{id}',[\App\Http\Controllers\Admin\ContactController::class, 'destroy'])->name('admin.contact.destroy');
+Route::resource('extras', ExtrasController::class);
+

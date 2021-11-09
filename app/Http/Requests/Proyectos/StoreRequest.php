@@ -27,7 +27,7 @@ class StoreRequest extends FormRequest
             'nombre' => 'required|unique:proyectos|max:255',
             'imagen' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
             'descripcion' => 'required',
-            'url' => 'required',
+            'url' => 'required|unique:proyectos|max:255',
         ];
     }
     public function messages()
@@ -43,6 +43,8 @@ class StoreRequest extends FormRequest
             'descripcion.required' => 'Es necesario el campo descripción.',
 
             'url.required' => 'Es necesario el campo url.',
+            'url.unique' => 'Ya se ha registrado este proyecto',
+            'url.max' => 'Solo se admiten hasta 255 caracteres',
 
         ];
     }

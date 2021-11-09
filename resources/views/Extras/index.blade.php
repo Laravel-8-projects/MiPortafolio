@@ -21,44 +21,42 @@
             </div>
         </nav>
         <div class="card-header">
-            Proyectos
+            Extras
             <br/>
             <br/>
             <div class="btn-group" role="group" aria-label="">
-                <a class="btn btn-success" type="button" href="{{route('proyectos.create')}}">Añadir proyecto</a>
+                <a class="btn btn-success" type="button" href="{{route('extras.create')}}">Añadir extra</a>
             </div>
         </div>
         <div class="card-body">
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Imagen</th>
-                        <th>Descripción</th>
-                        <th>URL</th>
+                        <th>Foto perfil</th>
+                        <th>Conocimientos</th>
+                        <th>Acerca de</th>
                         <th></th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($proyectos as $proyecto)
+                    @foreach ($extras as $extra)
                         <tr>
-                            <td>{{$proyecto->nombre}}</td>
                             <td>
-                                <img src="{{$proyecto->imagen}}" height="70px" width="70px">
+                                <img src="{{$extra->foto}}" height="70px" width="70px">
                             </td>
-                            <td>{{$proyecto->descripcion}}</td>
-                            <td><a href="{{$proyecto->url}}">{{$proyecto->url}}</a></td>
+                            <td>{{$extra->conocimientos}}</td>
+                            <td>{{$extra->acercade}}</td>
                             <td>
                                 <div class="btn-group" role="group" aria-label="">
-                                    <a class="btn btn-warning" href="{{ route('proyectos.edit',$proyecto->id) }}">Editar</a>
+                                    <a class="btn btn-warning" href="{{ route('extras.edit',$extra->id) }}">Editar</a>
                                 </div>
                             </td>
                             <td>
-                                <form action="{{ route('proyectos.destroy',$proyecto->id) }}" method="POST">
+                                <form action="{{ route('extras.destroy',$extra->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <button type="submit" class="btn btn-danger">Eliminar</button>
                                 </form>
                             </td>
                         </tr>

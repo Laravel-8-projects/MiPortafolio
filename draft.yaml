@@ -1,6 +1,6 @@
 models:
-  Proyecto:
-    nombre: string unique,
-    imagen: string,
-    descripcion: longtext,
-    url: string
+  Extra:
+    foto: string,
+    conocimientos: string,
+    acercade: string,
+    habilidades: string
