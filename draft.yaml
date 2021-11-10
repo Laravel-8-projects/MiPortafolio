@@ -1,6 +1,4 @@
 models:
-  Extra:
-    foto: string,
-    conocimientos: string,
-    acercade: string,
-    habilidades: string
+  Habilidad:
+    imagen: string,
+    descripcion: string unique

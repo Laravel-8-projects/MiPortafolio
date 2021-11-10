@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\ContactController as AdminContactController;
 use App\Http\Controllers\Admin\ExtrasController;
 use App\Http\Controllers\Admin\ProyectoController;
+use App\Http\Controllers\HabilidadController;
 use App\Http\Controllers\User\ContactController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,4 +28,5 @@ Route::resource('proyectos', ProyectoController::class);
 Route::get('admin/contactos',[\App\Http\Controllers\Admin\ContactController::class, 'index'])->name('admin.contactos.index');
 Route::delete('admin/contactos/{id}',[\App\Http\Controllers\Admin\ContactController::class, 'destroy'])->name('admin.contact.destroy');
 Route::resource('extras', ExtrasController::class);
+Route::resource('habilidades', HabilidadController::class);
 

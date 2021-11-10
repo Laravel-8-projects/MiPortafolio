@@ -1,8 +1,10 @@
 created:
-    - database/factories/ExtraFactory.php
-    - database/migrations/2021_11_09_024517_create_extras_table.php
-    - app/Models/Extra.php
+    - database/factories/HabilidadFactory.php
+    - database/migrations/2021_11_10_013440_create_habilidads_table.php
+    - app/Models/Habilidad.php
 models:
     Proyecto: { nombre: 'string unique,', imagen: 'string,', descripcion: 'longtext,', url: string }
     Contact: { nombre: 'string unique', email: 'string unique', telefono: 'string unique', mensaje: string }
     Extra: { foto: 'string,', conocimientos: 'string,', acercade: 'string,', habilidades: string }
+    Hability: { imagen: 'string,', descripcion: 'string unique' }
+    Habilidad: { imagen: 'string,', descripcion: 'string unique' }

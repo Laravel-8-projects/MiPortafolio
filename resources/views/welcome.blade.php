@@ -49,7 +49,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="{{$proyecto->imagen}}" alt="..." />
+                                    <img class="img-fluid rounded mb-5" src="{{$proyecto->imagen}}" alt="..." width="320px" height="320px"/>
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">{{$proyecto->descripcion}}</p>
                                     <a href="{{$proyecto->url}}" class="btn btn-primary">
@@ -67,15 +67,15 @@
 @endsection
 
 @section('contact')
-@if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 <section class="page-section bg-primary text-white mb-0" id="contact">
     <div class="container">
         <!-- Contact Section Heading-->
@@ -128,4 +128,25 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('about')
+    @foreach ($extras as $extra)
+        <section class="page-section bg-primary text-white mb-0" id="about">
+            <div class="container">
+                <!-- About Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-white">¿ Quién soy ?</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- About Section Content-->
+                <div class="row text-justify">
+                    <div class="col-lg-12"><p class="lead">{{$extra->acercade}}</p></div>
+                </div>
+            </div>
+        </section>
+    @endforeach
 @endsection

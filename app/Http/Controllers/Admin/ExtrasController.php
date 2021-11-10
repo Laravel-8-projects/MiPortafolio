@@ -98,7 +98,7 @@ class ExtrasController extends Controller
     {
         $input = $request->all();
 
-   
+        dd($extra);
         //PARA EDITAR LA IMAGEN DE PERFIL
         if ($request->file('foto')) {
             //Removemos la imagen que se va ha actualizar
