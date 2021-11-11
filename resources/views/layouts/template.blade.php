@@ -7,7 +7,7 @@
         <meta name="author" content="" />
         <title>Freelancer Carlos Tontaquimba</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="assets/portafolio.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -81,10 +81,10 @@
                     <!-- Footer Social Icons-->
                     <div class="col-lg-8 mb-5 mb-lg-0">
                         <h4 class="text-uppercase mb-4">Sígueme</h4>
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://www.facebook.com/carlos.tontaquimba.1"><i class="fab fa-fw fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/CarlosTontaquimba"><i class="fab fa-fw fa-github"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com/in/carlos-tontaquimba-5176291ab/"><i class="fab fa-fw fa-linkedin-in"></i></a>
-                        <a class="btn btn-outline-light btn-social mx-1" href="MAILTO:cvtontaquimbaq@utn.edu.ec"><i class="fas fa-mail-bulk    "></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="https://www.facebook.com/carlos.tontaquimba.1" target="_blank"><i class="fab fa-fw fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/CarlosTontaquimba" target="_blank"><i class="fab fa-fw fa-github"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com/in/carlos-tontaquimba-5176291ab/" target="_blank"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="MAILTO:cvtontaquimbaq@utn.edu.ec" target="_blank"><i class="fas fa-mail-bulk    "></i></a>
                     </div>
                    
                 </div>

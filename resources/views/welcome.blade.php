@@ -53,7 +53,7 @@
                                     <img class="img-fluid rounded mb-5" src="{{$proyecto->imagen}}" alt="..." width="320px" height="320px"/>
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4">{{$proyecto->descripcion}}</p>
-                                    <a href="{{$proyecto->url}}" class="btn btn-primary">
+                                    <a href="{{$proyecto->url}}" class="btn btn-primary" target="_blank">
                                         <i class="fas fa-times fa-fw"></i>
                                         Visitar proyecto
                                     </a>
