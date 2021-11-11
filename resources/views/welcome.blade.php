@@ -20,6 +20,7 @@
     @endforeach
         
 @endsection
+
 @section('content')
     @foreach ($proyectos as $proyecto)
         <!-- Portfolio Item 1-->
@@ -79,7 +80,7 @@
 <section class="page-section bg-primary text-white mb-0" id="contact">
     <div class="container">
         <!-- Contact Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-white">Contact Me</h2>
+        <h2 class="page-section-heading text-center text-uppercase text-white">Contáctame</h2>
          <!-- Icon Divider-->
          <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>
@@ -149,4 +150,69 @@
             </div>
         </section>
     @endforeach
+@endsection
+
+@section('habilities')
+    <section class="page-section portfolio" id="habilities">
+        <div class="container">
+            <!-- Portfolio Section Heading-->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">HABILIDADES</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Portfolio Grid Items-->
+            <div class="row justify-content-center">
+                <div class="container">
+                    <div class="row">
+                    <div class="col">
+                        <!-- Carousel wrapper -->
+                            <div
+                            id="carouselMultiItemExample"
+                            class="carousel slide carousel-dark text-center"
+                            data-mdb-ride="carousel"
+                            >
+
+                            <!-- Inner -->
+                            <div class="carousel-inner py-4">
+                            
+                            <!-- Single item -->
+                            <div class="carousel-item active">
+                                <div class="container">
+                                <div class="row">
+                                    @foreach ($habilidades as $habilidad)
+                                    <div class="col-lg-4">
+                                        <div class="card">
+                                                <img
+                                                src="{{$habilidad->imagen}}"
+                                                class="card-img-top"
+                                                alt="..."
+                                                />
+
+                                            
+                                            <div class="card-body">
+                                            <h5 class="card-title">{{$habilidad->descripcion}}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+
+                                
+                                
+                                </div>
+                                </div>
+                            </div>
+
+                            </div>
+                            <!-- Inner -->
+                            </div>
+                            <!-- Carousel wrapper -->
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection

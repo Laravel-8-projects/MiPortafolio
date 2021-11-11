@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Proyectos\StoreRequest;
+use App\Models\Fame;
 use App\Models\Proyecto;
 use Illuminate\Http\Request;
 

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Extra;
 use Illuminate\Http\Request;
+use App\Models\Fame;
 
-class ExtrasController extends Controller
+class FameController extends Controller
 {
     public function __construct()
     {
@@ -19,8 +19,8 @@ class ExtrasController extends Controller
      */
     public function index()
     {
-        $extras = Extra::all();
-        return view('Extras.index', compact('extras'));
+        $conocimientos = Fame::all(); //Trae todos los registros de la tabla
+        return view('fame.index')->with('conocimientos',$conocimientos); //Envía los datos a la vista index
     }
 
     /**
@@ -30,7 +30,7 @@ class ExtrasController extends Controller
      */
     public function create()
     {
-        return view('Extras.create');
+        return view('fame.create');
     }
 
     /**
@@ -41,29 +41,21 @@ class ExtrasController extends Controller
      */
     public function store(Request $request)
     {
-        $extra = new Extra();
+        $habilidad = new Fame();
+        $url_image = $this->upload($request->file('imagen'));
+        $habilidad->imagen = $url_image;
+
+        $habilidad->descripcion = $request->get('descripcion'); // EL get es lo mismo que el input
+
+        $res = $habilidad->save();
         
-        $url_image = $this->upload($request->file('foto'));
-        $extra->foto = $url_image;
+        return redirect('/knowledges');
 
-        $extra->conocimientos = $request->input('conocimientos');
-
-        $extra->acercade = $request->input('acercade');
-
-        $resp = $extra->save();
-        if($resp)
-        {
-            return redirect()->route('extras.index')
-            ->with('success','Proyecto registrado.');
-        }else{
-            return response()->view('errors.404', [], 404);
-        }
     }
-
     private function upload($image)
     {
         $path_info = pathinfo($image->getClientOriginalName());
-        $post_path = 'images/extras';
+        $post_path = 'images/habilidades';
 
         $rename = uniqid() . '.' . $path_info['extension'];
         $image->move(public_path() . "/$post_path", $rename);
@@ -73,57 +65,58 @@ class ExtrasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Extra  $extra
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Extra $extra)
+    public function edit($id)
     {
-        return view('Extras.edit', compact('extra'));
+        $habilidad = Fame::find($id);
+        return view('fame.edit')->with('habilidad',$habilidad);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Extra  $extra
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Extra $extra)
+    public function update(Request $request, $id)
     {
         $input = $request->all();
+        $fame = Fame::find($id);
 
         //PARA EDITAR LA IMAGEN DE PERFIL
-        if ($request->file('foto')) {
+        if ($request->file('imagen')) {
             //Removemos la imagen que se va ha actualizar
-            $extra = Extra::find($extra->id);
-            unlink(public_path($extra -> foto));
+            //dd($fame->imagen);
+            unlink(public_path($fame -> imagen));
             //Ponemos la nueva imagen
-            $url_image = $this->upload($request->file('foto'));
-            $extra->foto = $url_image;
-            $input['foto'] = "$url_image";
+            $url_image = $this->upload($request->file('imagen'));
+            $fame->imagen = $url_image;
+            $input['imagen'] = "$url_image";
         }else{
             unset($input['image_url']);
         }
         //************ */
-        $extra->conocimientos = $request->input('conocimientos');
-        $extra->acercade = $request->input('acercade');
+        $fame->descripcion = $request->input('descripcion');
 
-        $extra->update($input);
 
-        return redirect()->route('extras.index');
+        $fame->update($input);
+
+        return redirect()->route('knowledges.index');
     }
-
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Extra  $extra
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Extra $extra)
+    public function destroy($id)
     {
-        $extra = Extra::find($extra->id);
-        unlink(public_path($extra->foto));
-        $extra->delete();
+        $fame = Fame::find($id);
+        unlink(public_path($fame->imagen));
+        $fame->delete();
         return redirect()->back();
     }
 }

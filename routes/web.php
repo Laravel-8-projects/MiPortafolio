@@ -26,7 +26,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //ADMIN
 Route::resource('proyectos', ProyectoController::class);
 Route::get('admin/contactos',[\App\Http\Controllers\Admin\ContactController::class, 'index'])->name('admin.contactos.index');
-Route::delete('admin/contactos/{id}',[\App\Http\Controllers\Admin\ContactController::class, 'destroy'])->name('admin.contact.destroy');
+Route::delete('admin/{id}/contactos',[\App\Http\Controllers\Admin\ContactController::class, 'destroy'])->name('admin.contact.destroy');
 Route::resource('extras', ExtrasController::class);
-Route::resource('habilidades', HabilidadController::class);
+Route::resource('knowledges', \App\Http\Controllers\Admin\FameController::class);
 

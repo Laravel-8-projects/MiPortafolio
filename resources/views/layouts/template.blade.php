@@ -20,7 +20,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="{{route('template.index')}}">Freelancer</a>
+                <a class="navbar-brand" href="{{route('template.index')}}"><img src="images/index/Mesa de trabajo 1.png" alt=""></a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -61,28 +61,7 @@
         <!-- About Section-->
         @yield('about')
         <!-- Habilities Section-->
-        <section class="page-section portfolio" id="habilities">
-            <div class="container">
-                <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">HABILIDADES</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Portfolio Grid Items-->
-                <div class="row justify-content-center">
-                    <div class="container">
-                        <div class="row">
-                          <div class="col">
-                            Column
-                          </div>
-                        </div>
-                      </div>
-                </div>
-            </div>
-        </section>
+        @yield('habilities')
         <!-- Contact Section-->
         @yield('contact')
      
