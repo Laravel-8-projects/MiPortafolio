@@ -79,21 +79,14 @@
                         </p>
                     </div>
                     <!-- Footer Social Icons-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="col-lg-8 mb-5 mb-lg-0">
                         <h4 class="text-uppercase mb-4">Sígueme</h4>
                         <a class="btn btn-outline-light btn-social mx-1" href="https://www.facebook.com/carlos.tontaquimba.1"><i class="fab fa-fw fa-facebook-f"></i></a>
                         <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/CarlosTontaquimba"><i class="fab fa-fw fa-github"></i></a>
                         <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com/in/carlos-tontaquimba-5176291ab/"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="MAILTO:cvtontaquimbaq@utn.edu.ec"><i class="fas fa-mail-bulk    "></i></a>
                     </div>
-                    <!-- Footer About Text-->
-                    <div class="col-lg-4">
-                        <h4 class="text-uppercase mb-4">About Freelancer</h4>
-                        <p class="lead mb-0">
-                            Freelance is a free to use, MIT licensed Bootstrap theme created by
-                            <a href="http://startbootstrap.com">Start Bootstrap</a>
-                            .
-                        </p>
-                    </div>
+                   
                 </div>
             </div>
         </footer>
