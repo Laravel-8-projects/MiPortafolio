@@ -41,17 +41,16 @@ class FameController extends Controller
      */
     public function store(Request $request)
     {
-        $habilidad = new Fame();
-        $base64 = base64_encode(file_get_contents($request->file('imagen')));
-
-
-        $habilidad->imagen = 'data:image/png;base64,'.$base64;
+        $habilidad = new Fame(); // Instanciamos un nuevo objeto
+        
+        $base64 = base64_encode(file_get_contents($request->file('imagen'))); //Convertimos la imagen que viene de la vista en base64
+        $habilidad->imagen = 'data:image/png;base64,'.$base64; //Guardamos la imagen en la bdd convertida a base64
 
         $habilidad->descripcion = $request->get('descripcion'); // EL get es lo mismo que el input
 
-        $res = $habilidad->save();
+        $habilidad->save(); // Guardamos en la bdd
         
-        return redirect('/knowledges');
+        return redirect('/knowledges'); // Redirecciona a a vista knowledges
 
     }
     private function upload($image)
@@ -85,23 +84,22 @@ class FameController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $input = $request->all();
-        $fame = Fame::find($id);
+        $input = $request->all();//Captura toda la data ingresada en el form
+        $fame = Fame::find($id); // Busca la data con el id solicitado
 
         //PARA EDITAR LA IMAGEN DE PERFIL
         if ($request->file('imagen')) {
-            $base64 = base64_encode(file_get_contents($request->file('imagen')));
-            //Ponemos la nueva imagen
-            $url_image = 'data:image/png;base64,'.$base64;
-            $fame->imagen = $url_image;
+            $base64 = base64_encode(file_get_contents($request->file('imagen'))); //COnvierte la imagen del request en base64
+            $url_image = 'data:image/png;base64,'.$base64; //Almacena link de la imagen en base64
+            $fame->imagen = $url_image; //Inserta en la columna imagen la url en base64
             $input['imagen'] = "$url_image";
         }else{
             unset($input['image_url']);
         }
         //************ */
-        $fame->descripcion = $request->input('descripcion');
-        $fame->update($input);
-        return redirect()->route('knowledges.index');
+        $fame->descripcion = $request->input('descripcion');//Toma la descripcion del request
+        $fame->update($input); //Actualiza todo el input
+        return redirect()->route('knowledges.index');//Redirecciona al index de conocimientos
     }
     /**
      * Remove the specified resource from storage.

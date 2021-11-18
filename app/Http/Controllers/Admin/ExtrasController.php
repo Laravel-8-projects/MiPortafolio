@@ -20,7 +20,7 @@ class ExtrasController extends Controller
     public function index()
     {
         $extras = Extra::all();
-        return view('Extras.index', compact('extras'));
+        return view('Extras.index')->with('extras',$extras);
     }
 
     /**
@@ -42,9 +42,9 @@ class ExtrasController extends Controller
     public function store(Request $request)
     {
         $extra = new Extra();
-        
-        $url_image = $this->upload($request->file('foto'));
-        $extra->foto = $url_image;
+
+        $base64 = base64_encode(file_get_contents($request->file('foto'))); //Convierte la imagen que viene de la vista en base64
+        $extra->foto = 'data:image/png;base64,'.$base64; //Guarda la imagen en la bdd convertida a base64
 
         $extra->conocimientos = $request->input('conocimientos');
 
@@ -88,21 +88,21 @@ class ExtrasController extends Controller
      * @param  \App\Models\Extra  $extra
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Extra $extra)
+    public function update(Request $request, $id)
     {
         $input = $request->all();
+        $extra = Extra::find($id);
 
         //PARA EDITAR LA IMAGEN DE PERFIL
         if ($request->file('foto')) {
-            //Removemos la imagen que se va ha actualizar
-            $extra = Extra::find($extra->id);
-            unlink(public_path($extra -> foto));
-            //Ponemos la nueva imagen
-            $url_image = $this->upload($request->file('foto'));
-            $extra->foto = $url_image;
+
+            $base64 = base64_encode(file_get_contents($request->file('foto'))); //COnvierte la imagen del request en base64
+            $url_image = 'data:image/png;base64,'.$base64; //Almacena link de la imagen en base64
+            $extra->foto = $url_image; //Inserta en la columna imagen la url en base64
             $input['foto'] = "$url_image";
+           
         }else{
-            unset($input['image_url']);
+            unset($input['foto']);
         }
         //************ */
         $extra->conocimientos = $request->input('conocimientos');
@@ -122,7 +122,6 @@ class ExtrasController extends Controller
     public function destroy(Extra $extra)
     {
         $extra = Extra::find($extra->id);
-        unlink(public_path($extra->foto));
         $extra->delete();
         return redirect()->back();
     }

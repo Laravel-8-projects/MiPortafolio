@@ -4,7 +4,7 @@
     @foreach ($extras as $extra)
     <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Avatar Image-->
-        <img class="masthead-avatar mb-5" src="https://firebasestorage.googleapis.com/v0/b/fir-auth-e04c5.appspot.com/o/Extras%2FPerfilGrandeSinFondo.png?alt=media&token=a9cb19e6-9ad9-4b12-b341-891c953a7254" alt="..."  />
+        <img class="masthead-avatar mb-5" src="{{$extra->foto}}" alt="..."  />
         <!-- Masthead Heading-->
         <h1 class="masthead-heading text-uppercase mb-0">Carlos Tontaquimba</h1>
         <!-- Icon Divider-->
