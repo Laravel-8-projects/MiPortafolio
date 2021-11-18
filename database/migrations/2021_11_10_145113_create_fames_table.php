@@ -15,7 +15,7 @@ class CreateFamesTable extends Migration
     {
         Schema::create('fames', function (Blueprint $table) {
             $table->id();
-            $table->string('imagen');
+            $table->text('imagen');
             $table->string('descripcion')->unique();
             $table->timestamps();
         });

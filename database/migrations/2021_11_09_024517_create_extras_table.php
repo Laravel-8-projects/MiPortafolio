@@ -15,7 +15,7 @@ class CreateExtrasTable extends Migration
     {
         Schema::create('extras', function (Blueprint $table) {
             $table->id();
-            $table->string('foto');
+            $table->text('foto');
             $table->longText('conocimientos');
             $table->longText('acercade');
             $table->timestamps();
