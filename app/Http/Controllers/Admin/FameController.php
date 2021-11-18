@@ -42,8 +42,10 @@ class FameController extends Controller
     public function store(Request $request)
     {
         $habilidad = new Fame();
-        $url_image = $this->upload($request->file('imagen'));
-        $habilidad->imagen = $url_image;
+        $base64 = base64_encode(file_get_contents($request->file('imagen')));
+
+
+        $habilidad->imagen = 'data:image/png;base64,'.$base64;
 
         $habilidad->descripcion = $request->get('descripcion'); // EL get es lo mismo que el input
 
@@ -88,11 +90,9 @@ class FameController extends Controller
 
         //PARA EDITAR LA IMAGEN DE PERFIL
         if ($request->file('imagen')) {
-            //Removemos la imagen que se va ha actualizar
-            //dd($fame->imagen);
-            unlink(public_path($fame -> imagen));
+            $base64 = base64_encode(file_get_contents($request->file('imagen')));
             //Ponemos la nueva imagen
-            $url_image = $this->upload($request->file('imagen'));
+            $url_image = 'data:image/png;base64,'.$base64;
             $fame->imagen = $url_image;
             $input['imagen'] = "$url_image";
         }else{
@@ -100,10 +100,7 @@ class FameController extends Controller
         }
         //************ */
         $fame->descripcion = $request->input('descripcion');
-
-
         $fame->update($input);
-
         return redirect()->route('knowledges.index');
     }
     /**
@@ -115,7 +112,6 @@ class FameController extends Controller
     public function destroy($id)
     {
         $fame = Fame::find($id);
-        unlink(public_path($fame->imagen));
         $fame->delete();
         return redirect()->back();
     }
