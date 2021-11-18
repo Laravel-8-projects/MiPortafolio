@@ -47,8 +47,8 @@ class ProyectoController extends Controller
         $proyecto = new Proyecto();
         $proyecto->nombre = $request->input('nombre');
 
-        $url_image = $this->upload($request->file('imagen'));
-        $proyecto->imagen = $url_image;
+        $base64 = base64_encode(file_get_contents($request->file('imagen'))); //Convertimos la imagen que viene de la vista en base64
+        $proyecto->imagen = 'data:image/png;base64,'.$base64; //Guardamos la imagen en la bdd convertida a base64
 
 
         $proyecto->descripcion = $request->input('descripcion');
@@ -111,15 +111,12 @@ class ProyectoController extends Controller
         $proyecto->nombre = $request->input('nombre');
         //PARA EDITAR LA IMAGEN
         if ($request->file('imagen')) {
-            //Removemos la imagen que se va ha actualizar
-            $proyecto = Proyecto::find($proyecto->id);
-            unlink(public_path($proyecto -> imagen));
-            //Ponemos la nueva imagen
-            $url_image = $this->upload($request->file('imagen'));
-            $proyecto->imagen = $url_image;
+            $base64 = base64_encode(file_get_contents($request->file('imagen'))); //COnvierte la imagen del request en base64
+            $url_image = 'data:image/png;base64,'.$base64; //Almacena link de la imagen en base64
+            $proyecto->imagen = $url_image; //Inserta en la columna imagen la url en base64
             $input['imagen'] = "$url_image";
         }else{
-            unset($input['image_url']);
+            unset($input['imagen']);
         }
         //************ */
         $proyecto->descripcion = $request->input('descripcion');
@@ -140,7 +137,6 @@ class ProyectoController extends Controller
     {
 
         $proyecto = Proyecto::find($proyecto->id);
-        unlink(public_path($proyecto->imagen));
         $proyecto->delete();
         return redirect()->back();
     }
